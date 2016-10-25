@@ -1,3 +1,5 @@
 const ohHey = "Hello World";
 
-console.log(ohHey);
+const numbers = [1,2,3];
+
+const maxNum = Math.max(...numbers);
