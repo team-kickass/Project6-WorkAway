@@ -1,0 +1,30 @@
+@import 'setup';
+@import 'variables';
+
+.wrapper {
+
+}
+body {
+	font-family: 'raleway bold', 'helvetica', sans-serif;
+	background: $blue;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'playfair display', serif;
+}
+
+h1 {
+	text-align: center;
+	border-bottom: 6px solid $yellow;
+	width: 22%;
+	margin: 0 auto;
+	padding-top: 5%;
+	margin-bottom: 2%;
+}
+
+.intro-text {
+	color: white;
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+}
