@@ -67,7 +67,7 @@ placesApp.getInfo = function(placesData) {
 			var coffeePrice2 = topCity2.cost.coffee_in_cafe.USD;
 			var image2 = topCity2.media.image[500]; 
 
-	//these are the variables for Country 2's top city
+	//these are the variables for Country 3's top city
 			var cityName3 = topCity3.info.city.name;
 			var monthlyPrice3 = topCity3.cost.nomad.USD;
 			var coworkingPrice3 = topCity3.cost.coworking.monthly.USD;
