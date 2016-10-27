@@ -49,6 +49,21 @@ p {
 	margin-bottom: 50px;
 }
 
+.alert {
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	background: $orange;
+	color: white;
+	width: 25%;
+	text-align: center;
+	margin-bottom: 5%;
+	padding: 2%;
+}
+
 .results {
 	display: none;
 }
@@ -345,5 +360,136 @@ form {
             transform: perspective(140px) rotateY(180deg);
     opacity: 0; 
   }
+}
+
+@media (max-width: 740px){
+
+	#vmap{
+		width: 100%;
+		height: 500px;
+	}
+		svg {
+		width: 100%;
+		height: 500px;
+	}
+
+	#cityData {
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		.countryBox{
+			flex-direction:column;
+			width:100%;
+			min-height: 500px;
+			// overflow:hidden;
+		}
+		.imgBox{
+			width:100%;
+			height:50%;
+		}
+		.contentBox{
+			width:100%;
+			height:300px;
+
+		}
+	}
+	.alert {
+
+		&:after {
+			content:'';
+			border-right: 15px solid transparent;
+			border-left: 15px solid transparent;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid $orange;
+			position: absolute;
+			right: 50%;
+			top: -55%;
+			transform: translate(50%, 0);
+		}
+	}
+
+	#cityData {
+
+		.contentBox {
+			h2 { 
+				font-family: $hfont;
+				font-size: 2.8rem;
+				line-height: 2.8rem;
+				text-align: left;
+				color: white;
+				margin-top: 0;
+				background-image: url('../../images/underline.svg');
+				background-repeat: repeat-x;
+				background-size: 25px;
+				background-position: 100%;
+				display: inline;
+				padding-bottom: 3.5rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 420px){
+	#vmap{
+		width: 100%;
+		height: 300px;
+	}
+		svg {
+		width: 100%;
+		height: 300px;
+	}
+
+	#cityData {
+		.countryBox{
+			border:none;
+			&:after{
+				content:"";
+				height: 1px;
+				width:33%;
+				background:white;
+				margin: 0 auto;
+				margin-top:29px;
+			}
+		}
+		.contentBox{
+			margin-left: 5px;
+			padding-right: 8px;
+			height: 100vh;
+		}
+	}
+	.alert {
+
+		&:after {
+			content:'';
+			border-right: 15px solid transparent;
+			border-left: 15px solid transparent;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid $orange;
+			position: absolute;
+			right: 50%;
+			top: -65%;
+			transform: translate(50%, 0);
+		}
+	}
+	form {
+		select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+			font-family: $pfont;
+			color: white;
+			font-weight: 300;
+			letter-spacing: 1px;
+			font-size: 1.1rem;
+			padding: 10px 15px 10px 10px;
+			border: 1px solid white;
+			background: none;
+			border-radius: 0;
+			background-image: url('../../images/downarrow.svg');
+			background-repeat: no-repeat;
+			background-position: 98% 50%;
+			background-size: 8%;
+		}
+	}
 }
 
