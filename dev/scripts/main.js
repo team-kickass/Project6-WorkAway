@@ -69,9 +69,11 @@ placesApp.getInfo = function(placesData) {
 			var coworkingPrice2 = topCity2.cost.coworking.monthly.USD;
 			var coffeePrice2 = topCity2.cost.coffee_in_cafe.USD;
 			var image2 = topCity2.media.image[500]; 
+
 			
 			placesApp.country2 = placesApp.displayPlaces(nomadURL2, cityName2, monthlyPrice2, coworkingPrice2, coffeePrice2, image2);
 // console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(coworkingPrice2), currencyApp.times(coffeePrice2), image2);
+
 	//these are the variables for Country 2's top city
 			var nomadURL3 = topCity3.info.city.url;
 			var cityName3 = topCity3.info.city.name;
@@ -245,17 +247,17 @@ $(function(){
 	  jQuery('#vmap').vectorMap({
 	    map: 'world_en',
 	    backgroundColor: 'transparent',
-	    borderColor: '#fff',
-	    borderOpacity: 0.25,
-	    borderWidth: 1,
-	    color: '#E4572E',
+	    borderColor: 'transparent',
+	    borderOpacity: 1,
+	    borderWidth: 0.5,
+	    color: '#7F859D',
 	    enableZoom: false,
 	    hoverColor: '#F3A712',
 	    hoverOpacity: null,
 	    multiSelectRegion: true,
 	    normalizeFunction: 'linear', 
 	    scaleColors: ['#b6d6ff', '#005ace'],
-	    selectedColor: '#29335C',
+	    selectedColor: '#E4572E',
 	    selectedRegions: null,
 	    showTooltip: true,
 		onRegionClick: function(event, code, region)
