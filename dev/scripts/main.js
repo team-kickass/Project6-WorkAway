@@ -58,7 +58,9 @@ placesApp.getInfo = function(placesData) {
 			var coworkingPrice1 = topCity1.cost.coworking.monthly.USD;
 			var coffeePrice1 = topCity1.cost.coffee_in_cafe.USD;
 			var image1 = topCity1.media.image[500]; //think we need to add the API url to start of this to make it display as image on page? 
-console.log(cityName1,currencyApp.times(monthlyPrice1), currencyApp.times(coworkingPrice1), currencyApp.times(coffeePrice1), image1);
+			placesApp.country1 = placesApp.displayPlaces(cityName1, monthlyPrice1, coworkingPrice1, coffeePrice1, image1);
+
+// console.log(cityName1,currencyApp.times(monthlyPrice1), currencyApp.times(coworkingPrice1), currencyApp.times(coffeePrice1), image1);
 	//these are the variables for Country 2's top city
 			var cityName2 = topCity2.info.city.name;
 			var monthlyPrice2 = topCity2.cost.nomad.USD;
@@ -66,10 +68,16 @@ console.log(cityName1,currencyApp.times(monthlyPrice1), currencyApp.times(cowork
 			var coffeePrice2 = topCity2.cost.coffee_in_cafe.USD;
 			var image2 = topCity2.media.image[500]; 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	//these are the variables for Country 3's top city
 =======
 console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(coworkingPrice2), currencyApp.times(coffeePrice2), image2);
+=======
+			
+			placesApp.country2 = placesApp.displayPlaces(cityName2, monthlyPrice2, coworkingPrice2, coffeePrice2, image2);
+// console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(coworkingPrice2), currencyApp.times(coffeePrice2), image2);
+>>>>>>> 71666d0dd9f27b6da3841ee655c0f79442098b72
 	//these are the variables for Country 2's top city
 >>>>>>> d9fe904acfb9d58f683e3457bf143dcd1af63734
 			var cityName3 = topCity3.info.city.name;
@@ -77,7 +85,9 @@ console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(cowor
 			var coworkingPrice3 = topCity3.cost.coworking.monthly.USD;
 			var coffeePrice3 = topCity3.cost.coffee_in_cafe.USD;
 			var image3 = topCity3.media.image[500]; 
-console.log(cityName3, currencyApp.times(monthlyPrice3), currencyApp.times(coworkingPrice3), currencyApp.times(coffeePrice3), image3);
+
+			placesApp.country3 = placesApp.displayPlaces(cityName3, monthlyPrice3, coworkingPrice3, coffeePrice3, image3);
+// console.log(cityName3, currencyApp.times(monthlyPrice3), currencyApp.times(coworkingPrice3), currencyApp.times(coffeePrice3), image3);
 
 };
 
@@ -93,6 +103,8 @@ placesApp.mrsubmit = function(){
 		placesApp.country3 = placesApp.countryArray[2];
 
 		placesApp.getPlaces();
+
+		
 
 		currencyApp.userInput = $('#currency').val();
 		console.log(currencyApp.userInput);
@@ -110,11 +122,26 @@ placesApp.mrsubmit = function(){
 
  
 //this is the displayPlaces function - displays the information on the page
-placesApp.displayPlaces = function(){
+placesApp.displayPlaces = function(cityName, monthlyPrice, coworkingPrice, coffeePrice, image){
+	var $countryBox = $('<article>').addClass('countryBox');
+	var $imgBox = $('<div>').addClass('imgBox');
+	var $cityImage = $('<img>').attr({
+		src: 'https://nomadlist.com' + image,
+	})
+	var $contentBox =  $('<div>').addClass('contentBox')
+	var $cityName = $('<h2>').text(cityName);
+	var $monthlyPrice = $('<p>').text('Monthly Living Cost: ' + currencyApp.times(monthlyPrice));
+	var $coworkingPrice = $('<p>').text('Monthly CoWorking Cost: ' + currencyApp.times(coworkingPrice));
+	var $coffeePrice = $('<p>').text('Price of Coffee:' + currencyApp.times(coffeePrice));
 
+	$imgBox.append($cityImage);
+	$contentBox.append($cityName,$monthlyPrice,$coworkingPrice,$coffeePrice);
+	$countryBox.append($imgBox, $contentBox);
+	$('#cityData').append($countryBox);
 
-
+//placesApp.country1, placesApp.country2, placesApp.country3
 }; //this is the end of the displayPlaces function
+
 
 
 
