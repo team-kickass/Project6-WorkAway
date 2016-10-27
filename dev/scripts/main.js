@@ -93,23 +93,30 @@ placesApp.mrsubmit = function(){
 	
 	$('form').on('submit', function(e){
 		e.preventDefault();
+		if (placesApp.countryArray.length < 3) {
+			$('.alert').css("display","block");
+		}
+		else {
+			placesApp.country1 = placesApp.countryArray[0];
+			placesApp.country2 = placesApp.countryArray[1];
+			placesApp.country3 = placesApp.countryArray[2];
 
-		placesApp.country1 = placesApp.countryArray[0];
-		placesApp.country2 = placesApp.countryArray[1];
-		placesApp.country3 = placesApp.countryArray[2];
+			$('.alert').css("display","none");
 
-		placesApp.getPlaces();
+			placesApp.getPlaces();
 
-		
+			
 
-		currencyApp.userInput = $('#currency').val();
-		console.log(currencyApp.userInput);
-		currencyApp.getCode();
+			currencyApp.userInput = $('#currency').val();
+			console.log(currencyApp.userInput);
+			currencyApp.getCode();
 
-		//smooth scroll
-		$('html, body').animate({
-		    scrollTop: $(".results").offset().top
-		}, 2000);
+			//smooth scroll
+			$('html, body').animate({
+			    scrollTop: $(".results").offset().top
+			}, 2000);
+			
+		}
 
 	});
 
@@ -251,6 +258,10 @@ $(function(){
 	    borderOpacity: 1,
 	    borderWidth: 0.5,
 	    color: '#7F859D',
+	    colors: {
+	    	gw:'#29335C',
+
+	    },
 	    enableZoom: false,
 	    hoverColor: '#F3A712',
 	    hoverOpacity: null,
@@ -262,7 +273,7 @@ $(function(){
 	    showTooltip: true,
 		onRegionClick: function(event, code, region)
 		{
-			console.log(region);
+			console.log(code);
 			selectedCountry = region;
 			//Check if there are 3 selected
 			if (placesApp.countryArray.length >= 3) {
