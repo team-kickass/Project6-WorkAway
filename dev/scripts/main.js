@@ -103,6 +103,12 @@ placesApp.mrsubmit = function(){
 		currencyApp.userInput = $('#currency').val();
 		console.log(currencyApp.userInput);
 		currencyApp.getCode();
+
+		//smooth scroll
+		$('html, body').animate({
+		    scrollTop: $(".results").offset().top
+		}, 2000);
+
 	});
 
 };
@@ -122,7 +128,8 @@ placesApp.displayPlaces = function(nomadURL, cityName, monthlyPrice, coworkingPr
 	var $cityImage = $('<img>').attr({
 		src: 'https://nomadlist.com' + image,
 	});
-	var $contentBox =  $('<div>').addClass('contentBox')
+	var $contentBox = $('<div>').addClass('contentBox')
+	var $contents =  $('<div>').addClass('contents')
 	var $link = $('<a>').attr({
 		href: 'https://nomadlist.com' + nomadURL,
 		target: "_blank"
@@ -134,7 +141,8 @@ placesApp.displayPlaces = function(nomadURL, cityName, monthlyPrice, coworkingPr
 
 	$link.append($cityName);
 	$imgBox.append($cityImage);
-	$contentBox.append($link,$monthlyPrice,$coworkingPrice,$coffeePrice);
+	$contents.append($link,$monthlyPrice,$coworkingPrice,$coffeePrice);
+	$contentBox.append($link,$contents	);
 	$countryBox.append($imgBox, $contentBox);
 	$('#cityData').append($countryBox);
 
