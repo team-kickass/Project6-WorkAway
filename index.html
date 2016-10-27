@@ -6,15 +6,18 @@
 	<title>My Project</title>
 	<link rel="stylesheet" href="public/styles/style.css">
 	<link href="map/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway:300,700" rel="stylesheet">
 </head>
 <body>
+	<section class="wrapper intro-text">
 	<h1>Work Away</h1>
-	<p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatibus ipsa, amet, veritatis possimus?</p>
-	<div id="vmap" style="width: 100%; height: 500px;"></div>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatibus ipsa, amet, veritatis possimus?</p>
+	</section>
+	<div id="vmap"></div>
 
-	<form action="">
+	<form action="" class="wrapper">
 		<select id="currency">
+			<option value="Canadian Dollar">Select your currency</option>
 		  <option value="Canadian Dollar">Canadian Dollar ($)</option>
 		  <option value="United States Dollar">US Dollar ($)</option>
 		  <option value="Euro">Euro (€)</option>
@@ -32,16 +35,19 @@
 		</select>
 		<input type="submit">
 	</form>
-	<section class="results">
-		<h1>Check Out...</h1>
-		<p>These are the top-rated cities for Nomads in the countries you selected.</p>
+	<section class="results wrapper" id="results">
+		<div class="intro-text">
+			<h1>Check Out...</h1>
+			<p>These are the top-rated cities for Nomads in the countries you selected.</p>
+		</div>
 		<div id="cityData">
 
 		</div>
+		<button class="startOver">Start Over</button>
 	</section>
 
 	<footer>
-		<h6>Developed by <a href="">Sara</a>, <a href="">Julia</a> & <a href="">Mike</a> using the <a href="https://nomadlist.com/">NomadList</a> and <a href="https://currencylayer.com/">CurrencyLayer</a>API's</h6>
+		<h6>Developed by <a href="http://saraberkes.com">Sara</a>, <a href="http://byjuliakim.com">Julia</a> & <a href="">Mike</a> using the <a href="https://nomadlist.com/">NomadList</a> and <a href="https://currencylayer.com/">CurrencyLayer</a> API's</h6>
 	</footer>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

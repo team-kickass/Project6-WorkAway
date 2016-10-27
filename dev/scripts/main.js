@@ -67,19 +67,11 @@ placesApp.getInfo = function(placesData) {
 			var coworkingPrice2 = topCity2.cost.coworking.monthly.USD;
 			var coffeePrice2 = topCity2.cost.coffee_in_cafe.USD;
 			var image2 = topCity2.media.image[500]; 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-	//these are the variables for Country 3's top city
-=======
-console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(coworkingPrice2), currencyApp.times(coffeePrice2), image2);
-=======
 			
 			placesApp.country2 = placesApp.displayPlaces(cityName2, monthlyPrice2, coworkingPrice2, coffeePrice2, image2);
 // console.log(cityName2, currencyApp.times(monthlyPrice2), currencyApp.times(coworkingPrice2), currencyApp.times(coffeePrice2), image2);
->>>>>>> 71666d0dd9f27b6da3841ee655c0f79442098b72
-	//these are the variables for Country 2's top city
->>>>>>> d9fe904acfb9d58f683e3457bf143dcd1af63734
+
 			var cityName3 = topCity3.info.city.name;
 			var monthlyPrice3 = topCity3.cost.nomad.USD;
 			var coworkingPrice3 = topCity3.cost.coworking.monthly.USD;
@@ -219,17 +211,17 @@ $(function(){
 	  jQuery('#vmap').vectorMap({
 	    map: 'world_en',
 	    backgroundColor: 'transparent',
-	    borderColor: '#fff',
-	    borderOpacity: 0.25,
-	    borderWidth: 1,
-	    color: '#E4572E',
+	    borderColor: 'transparent',
+	    borderOpacity: 1,
+	    borderWidth: 0.5,
+	    color: '#7F859D',
 	    enableZoom: false,
 	    hoverColor: '#F3A712',
 	    hoverOpacity: null,
 	    multiSelectRegion: true,
 	    normalizeFunction: 'linear', 
 	    scaleColors: ['#b6d6ff', '#005ace'],
-	    selectedColor: '#29335C',
+	    selectedColor: '#E4572E',
 	    selectedRegions: null,
 	    showTooltip: true,
 		onRegionClick: function(element, code, region)
