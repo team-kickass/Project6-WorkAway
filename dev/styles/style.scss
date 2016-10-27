@@ -94,6 +94,7 @@ footer {
 //form styling starts here
 form {
 	text-align: center;
+	position: relative;
 
 	select {
 	-webkit-appearance: none;
@@ -111,6 +112,10 @@ form {
 		background-repeat: no-repeat;
 		background-position: 96% 50%;
 		background-size: 8%;
+
+		option {
+			background: $blue;
+		}
 	}
 
 	input[type=submit]{
@@ -135,6 +140,33 @@ form {
 	}
 }
 
+.alert {
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 100%;
+	margin: 0 auto;
+	background: $orange;
+	font-family: $pfont;
+	color: white;
+	width: 275px;
+	text-align: center;
+	margin-bottom: 5%;
+	padding: 2%;
+
+	&:after {
+		content:'';
+		border-right: 15px solid transparent;
+		border-left: 15px solid transparent;
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid $orange;
+		position: absolute;
+		right: 50%;
+		top: -50%;
+		transform: translate(50%, 0);
+	}
+}
 
 //results Section starts here
 
@@ -267,7 +299,7 @@ form {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $yellow;
+  background-color: $orange;
   -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
           animation: sk-foldCubeAngle 2.4s infinite linear both;
   -webkit-transform-origin: 100% 100%;
@@ -331,9 +363,16 @@ form {
 }
 
 @media (max-width: 740px){
+
 	#vmap{
-	    margin-top: -13%;
+		width: 100%;
+		height: 500px;
 	}
+		svg {
+		width: 100%;
+		height: 500px;
+	}
+
 	#cityData {
 		display:flex;
 		flex-direction:column;
@@ -355,12 +394,52 @@ form {
 
 		}
 	}
+	.alert {
+
+		&:after {
+			content:'';
+			border-right: 15px solid transparent;
+			border-left: 15px solid transparent;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid $orange;
+			position: absolute;
+			right: 50%;
+			top: -55%;
+			transform: translate(50%, 0);
+		}
+	}
+
+	#cityData {
+
+		.contentBox {
+			h2 { 
+				font-family: $hfont;
+				font-size: 2.8rem;
+				line-height: 2.8rem;
+				text-align: left;
+				color: white;
+				margin-top: 0;
+				background-image: url('../../images/underline.svg');
+				background-repeat: repeat-x;
+				background-size: 25px;
+				background-position: 100%;
+				display: inline;
+				padding-bottom: 3.5rem;
+			}
+		}
+	}
 }
 
 @media (max-width: 420px){
 	#vmap{
-
+		width: 100%;
+		height: 300px;
 	}
+		svg {
+		width: 100%;
+		height: 300px;
+	}
+
 	#cityData {
 		.countryBox{
 			border:none;
@@ -376,6 +455,40 @@ form {
 		.contentBox{
 			margin-left: 5px;
 			padding-right: 8px;
+			height: 100vh;
+		}
+	}
+	.alert {
+
+		&:after {
+			content:'';
+			border-right: 15px solid transparent;
+			border-left: 15px solid transparent;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid $orange;
+			position: absolute;
+			right: 50%;
+			top: -65%;
+			transform: translate(50%, 0);
+		}
+	}
+	form {
+		select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+			font-family: $pfont;
+			color: white;
+			font-weight: 300;
+			letter-spacing: 1px;
+			font-size: 1.1rem;
+			padding: 10px 15px 10px 10px;
+			border: 1px solid white;
+			background: none;
+			border-radius: 0;
+			background-image: url('../../images/downarrow.svg');
+			background-repeat: no-repeat;
+			background-position: 98% 50%;
+			background-size: 8%;
 		}
 	}
 }
