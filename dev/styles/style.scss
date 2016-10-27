@@ -47,6 +47,22 @@ p {
 	height: 90vh;
 	margin: 0 auto;
 	margin-bottom: 50px;
+	position: relative;
+}
+
+.alert {
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	background: $orange;
+	color: white;
+	width: 25%;
+	text-align: center;
+	margin-bottom: 5%;
+	padding: 2%;
 }
 
 .results {
@@ -318,10 +334,4 @@ form {
     opacity: 0; 
   }
 }
-
-
-
-
-
-
 
