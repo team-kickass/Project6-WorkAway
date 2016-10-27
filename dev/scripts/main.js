@@ -263,6 +263,41 @@ $(function(){
 
 	placesApp.countryArray = [];
 	var selectedCountry = undefined;
+	var selectedCode = undefined;
+	placesApp.disabledCountryArray = [
+		'af',
+		'ag',
+		'bb',
+		'bj',
+		'bt',
+		'bw',
+		'bf',
+		'bi',
+		'cm',
+		'cf',
+		'td',
+		'km',
+		'cr',
+		'dj',
+		'dm',
+		'gq',
+		'er',
+		'gl',
+		'gd',
+		'gw',
+		'gy',
+		'kz',
+		'ls',
+		'mr',
+		'kn',
+		'lc',
+		'st',
+		'sb',
+		'sz',
+		'tl',
+		'tm',
+		'vu',
+	];
 	  jQuery('#vmap').vectorMap({
 	    map: 'world_en',
 	    backgroundColor: 'transparent',
@@ -271,8 +306,38 @@ $(function(){
 	    borderWidth: 0.5,
 	    color: '#7F859D',
 	    colors: {
-	    	gw:'#29335C',
-
+	    	af: '#545C7D',
+	    	ag: '#545C7D',
+	    	bb: '#545C7D',
+	    	bj: '#545C7D',
+	    	bt: '#545C7D',
+	    	bw: '#545C7D',
+	    	bf: '#545C7D',
+	    	bi: '#545C7D',
+	    	cm: '#545C7D',
+	    	cf: '#545C7D',
+	    	td: '#545C7D',
+	    	km: '#545C7D',
+	    	cr: '#545C7D',
+	    	dj: '#545C7D',
+	    	dm: '#545C7D',
+	    	gq: '#545C7D',
+	    	er: '#545C7D',
+	    	gl: '#545C7D',
+	    	gd: '#545C7D',
+	    	gw: '#545C7D',
+	    	gy: '#545C7D',
+	    	kz: '#545C7D',
+	    	ls: '#545C7D',
+	    	mr: '#545C7D',
+	    	kn: '#545C7D',
+	    	lc: '#545C7D',
+	    	st: '#545C7D',
+	    	sb: '#545C7D',
+	    	sz: '#545C7D',
+	    	tl: '#545C7D',
+	    	tm: '#545C7D',
+	    	vu: '#545C7D',
 	    },
 	    enableZoom: false,
 	    hoverColor: '#F3A712',
@@ -287,13 +352,19 @@ $(function(){
 		{
 			console.log(code);
 			selectedCountry = region;
+			selectedCode = code;
+			//Check if the country is on the disabled list
+			var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
+			if (placesApp.disabledCountryArray.indexOf(selectedCode) >= 0 ) {
+				event.preventDefault();
+			}
 			//Check if there are 3 selected
-			if (placesApp.countryArray.length >= 3) {
+			else if (placesApp.countryArray.length >= 3) {
 				console.log('Greater')
 				//Check to see if the new selected region is in the list already
-				var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
 				if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
 					//If so remove it
+
 					placesApp.countryArray.splice(selectedIndex,1);
 				}
 				else {
@@ -303,7 +374,13 @@ $(function(){
 			}
 			else {
 				//If there are LESS than 3 selected, do the thing
-				placesApp.countryArray.push(selectedCountry);
+				if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
+					//If so remove it
+					placesApp.countryArray.splice(selectedIndex,1);
+				}
+				else {
+					placesApp.countryArray.push(selectedCountry);
+				}
 			}
 		},   
 	  //   onRegionSelect: function(event, code, region)
@@ -323,11 +400,10 @@ $(function(){
 			// 	event.preventDefault();
 			// }
 	  //   },
-	  //   onRegionDeselect: function(event, code, region)
-	  //   {
-	  //   	var deselectedCountry = region;
-	  //   	placesApp.countryArray.pop(deselectedCountry);
-	  //   	console.log(placesApp.countryArray);
-	  //   }
+	    // onRegionDeselect: function(event, code, region)
+	    // {
+
+
+	    // }
 	});
 });

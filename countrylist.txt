@@ -17,6 +17,7 @@ Djibouti: dj
 Dominica: dm
 Equatorial Guinea: gq
 Eritrea: er
+Greenland: gl
 Grenada: gd
 Guinea-Bissau: gw
 Guyana: gy
@@ -46,3 +47,36 @@ Turkmenistan: tm
 Tuvalu: not on map
 Vanuatu: vu
 Vatican City (Holy See): not on map
+
+af
+ag
+bb
+bj
+bt
+bw
+bf
+bi
+cm 
+cf
+td
+km
+cr
+dj
+dm
+gq
+er
+gl
+gd
+gw
+gy
+kz
+ls
+mr
+kn
+lc
+st
+sb
+sz
+tl
+tm
+vu
