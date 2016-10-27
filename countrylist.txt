@@ -1,0 +1,48 @@
+Afghanistan: af
+Andorra: not on map
+Antigua and Barbuda: ag
+Barbados: bb
+Benin: bj
+Bhutan: bt
+Botswana: bw
+Burkina Faso: bf
+Burundi: bi
+Cabo Verde: not on map
+Cameroon: cm
+Central African Republic (CAR): cf
+Chad: td
+Comoros: km
+Costa Rica: cr
+Djibouti: dj
+Dominica: dm
+Equatorial Guinea: gq
+Eritrea: er
+Grenada: gd
+Guinea-Bissau: gw
+Guyana: gy
+Kazakhstan: kz
+Kiribati: not on map
+Kosovo: not on map
+Lesotho: ls
+Liechtenstein: not on map
+Marshall Islands: not on map
+Mauritania: mr
+Micronesia: not on map
+Nauru: not on map
+Palau: not on map
+Saint Kitts and Nevis: kn
+Saint Lucia: lc
+Saint Vincent and the Grenadines: not on map
+Samoa: not on map
+San Marino: not on map
+Sao Tome and Principe: st
+Solomon Islands: sb
+South Sudan: not on map
+Suriname: not on map
+Swaziland: sz
+Timor-Leste: tl
+Tonga: not on map
+Turkmenistan: tm
+Tuvalu: not on map
+Vanuatu: vu
+Vatican City (Holy See): not on map
