@@ -119,7 +119,7 @@ placesApp.mrsubmit = function(){
 			currencyApp.userInput = $('#currency').val();
 			console.log(currencyApp.userInput);
 			currencyApp.getCode();
-
+	}
 		//smooth scroll
 		$('html, body').animate({
 		    scrollTop: $(".results").offset().top
