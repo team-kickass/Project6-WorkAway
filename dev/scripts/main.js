@@ -11,7 +11,9 @@ placesApp.getPlaces = function() {
 		dataType: 'json',
 	})
 	.then(function(placesData){
-		placesApp.getInfo(placesData)
+		placesApp.getInfo(placesData);
+		$('.sk-folding-cube').fadeOut();
+
 	
 	}); //this is the end of the "then" function
 }; //this is the end of the getPlaces function
@@ -114,7 +116,7 @@ placesApp.mrsubmit = function(){
 		//smooth scroll
 		$('html, body').animate({
 		    scrollTop: $(".results").offset().top
-		}, 2000);
+		}, 800);
 
 	});
 
@@ -249,12 +251,8 @@ currencyApp.times = function(amount){
 };
 
 
-
 $(function(){
 	placesApp.init();
-	$('.startOver').on('click', function(){
-		$('#results').fadeOut();
-	});
 
 	placesApp.countryArray = [];
 	var selectedCountry = undefined;
