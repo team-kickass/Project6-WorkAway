@@ -297,6 +297,7 @@ $(function(){
 		'tl',
 		'tm',
 		'vu',
+		'zm'
 	];
 	  jQuery('#vmap').vectorMap({
 	    map: 'world_en',
@@ -338,6 +339,7 @@ $(function(){
 	    	tl: '#545C7D',
 	    	tm: '#545C7D',
 	    	vu: '#545C7D',
+	    	zm: '#545C7D',
 	    },
 	    enableZoom: false,
 	    hoverColor: '#F3A712',
