@@ -223,21 +223,51 @@ $(function(){
 	    selectedColor: '#29335C',
 	    selectedRegions: null,
 	    showTooltip: true,
-		onRegionClick: function(element, code, region)
+		onRegionClick: function(event, code, region)
 		{
 			console.log(region);
 			selectedCountry = region;
+			//Check if there are 3 selected
+			if (placesApp.countryArray.length >= 3) {
+				console.log('Greater')
+				//Check to see if the new selected region is in the list already
+				var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
+				if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
+					//If so remove it
+					placesApp.countryArray.splice(selectedIndex,1);
+				}
+				else {
+					//If it is not! Prevent the map from selected anything else
+					event.preventDefault();
+				}
+			}
+			else {
+				//If there are LESS than 3 selected, do the thing
+				placesApp.countryArray.push(selectedCountry);
+			}
 		},   
-	    onRegionSelect: function(element, code, region)
-	    {
-	        placesApp.countryArray.push(selectedCountry);
-	        console.log(placesApp.countryArray);
-	    },
-	    onRegionDeselect: function(event, code, region)
-	    {
-	    	var deselectedCountry = region;
-	    	placesApp.countryArray.pop(deselectedCountry);
-	    	console.log(placesApp.countryArray);
-	    }
+	  //   onRegionSelect: function(event, code, region)
+	  //   {
+	  //       if (placesApp.countryArray.length >= 3 && selectedCountry !== '') {
+
+	  //       	console.log("working", selectedCountry);
+			// 	placesApp.countryArray.pop(selectedCountry);
+			// } 
+			// else if (placesApp.countryArray.length < 3) {
+			// 	placesApp.countryArray.push(selectedCountry);
+			// 	console.log(placesApp.countryArray)
+			// } 
+			// else {
+			// 	console.log(placesApp.countryArray)
+	  //       	console.log("reached limit");
+			// 	event.preventDefault();
+			// }
+	  //   },
+	  //   onRegionDeselect: function(event, code, region)
+	  //   {
+	  //   	var deselectedCountry = region;
+	  //   	placesApp.countryArray.pop(deselectedCountry);
+	  //   	console.log(placesApp.countryArray);
+	  //   }
 	});
 });
