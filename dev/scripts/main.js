@@ -113,7 +113,6 @@ placesApp.mrsubmit = function(){
 			$('.alert').css("display","none");
 
 			placesApp.getPlaces();
-
 			
 
 			currencyApp.userInput = $('#currency').val();
@@ -128,13 +127,6 @@ placesApp.mrsubmit = function(){
 	});
 
 };
-
-// then take each city
-	// & get photo, avg monthly price, avg co-working space price monthly, avg price of cup of coffee, best months to visit 
-
-	// convert all price information to user's selected currency
-// display all this information in user's selected currency, ranked by top-rated city out of 3 top ranked cities. Link each option to Nomad Listing? 
-
 
  
 //this is the displayPlaces function - displays the information on the page
@@ -166,8 +158,6 @@ placesApp.displayPlaces = function(country, nomadURL, cityName, monthlyPrice, co
 	$contentBox.append($linkBox,$contents);
 	$countryBox.append($imgBox, $contentBox);
 	$('#cityData').append($countryBox);
-
-//placesApp.country1, placesApp.country2, placesApp.country3
 }; //this is the end of the displayPlaces function
 
 
@@ -187,9 +177,6 @@ var currencyApiKey = '9896895338c0fda481213ecbf853dcd7'
 
 var currencyApp = {};
 //get the people's country input (drop-down)
-
-// currencyApp.userInput = "United Arab Emirates Dirham"; //change to userinput value
-
 //get the 3-digit code
 currencyApp.getCode = function(){
 	$.ajax({
@@ -258,154 +245,168 @@ currencyApp.times = function(amount){
 };
 
 
-$(function(){
-	placesApp.init();
+placesApp.countryArray = [];
+var selectedCountry = undefined;
+var selectedCode = undefined;
+placesApp.disabledCountryArray = [
+	'af',
+	'ag',
+	'bb',
+	'bj',
+	'bt',
+	'bw',
+	'bf',
+	'bi',
+	'cm',
+	'cf',
+	'td',
+	'km',
+	'cr',
+	'dj',
+	'dm',
+	'gq',
+	'er',
+	'gl',
+	'gd',
+	'gw',
+	'gy',
+	'kz',
+	'ls',
+	'mr',
+	'kn',
+	'lc',
+	'st',
+	'sb',
+	'sz',
+	'tl',
+	'tm',
+	'vu',
+	'zm'
+];
+jQuery('#vmap').vectorMap({
+    map: 'world_en',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderOpacity: 1,
+    borderWidth: 0.5,
+    color: '#7F859D',
+    colors: {
+    	af: '#545C7D',
+    	ag: '#545C7D',
+    	bb: '#545C7D',
+    	bj: '#545C7D',
+    	bt: '#545C7D',
+    	bw: '#545C7D',
+    	bf: '#545C7D',
+    	bi: '#545C7D',
+    	cm: '#545C7D',
+    	cf: '#545C7D',
+    	td: '#545C7D',
+    	km: '#545C7D',
+    	cr: '#545C7D',
+    	dj: '#545C7D',
+    	dm: '#545C7D',
+    	gq: '#545C7D',
+    	er: '#545C7D',
+    	gl: '#545C7D',
+    	gd: '#545C7D',
+    	gw: '#545C7D',
+    	gy: '#545C7D',
+    	kz: '#545C7D',
+    	ls: '#545C7D',
+    	mr: '#545C7D',
+    	kn: '#545C7D',
+    	lc: '#545C7D',
+    	st: '#545C7D',
+    	sb: '#545C7D',
+    	sz: '#545C7D',
+    	tl: '#545C7D',
+    	tm: '#545C7D',
+    	vu: '#545C7D',
+    	zm: '#545C7D',
+    },
+    enableZoom: false,
+    hoverColor: '#F3A712',
+    hoverColors: {
+    	af: '#545C7D',
+    	ag: '#545C7D',
+    	bb: '#545C7D',
+    	bj: '#545C7D',
+    	bt: '#545C7D',
+    	bw: '#545C7D',
+    	bf: '#545C7D',
+    	bi: '#545C7D',
+    	cm: '#545C7D',
+    	cf: '#545C7D',
+    	td: '#545C7D',
+    	km: '#545C7D',
+    	cr: '#545C7D',
+    	dj: '#545C7D',
+    	dm: '#545C7D',
+    	gq: '#545C7D',
+    	er: '#545C7D',
+    	gl: '#545C7D',
+    	gd: '#545C7D',
+    	gw: '#545C7D',
+    	gy: '#545C7D',
+    	kz: '#545C7D',
+    	ls: '#545C7D',
+    	mr: '#545C7D',
+    	kn: '#545C7D',
+    	lc: '#545C7D',
+    	st: '#545C7D',
+    	sb: '#545C7D',
+    	sz: '#545C7D',
+    	tl: '#545C7D',
+    	tm: '#545C7D',
+    	vu: '#545C7D',
+    	zm: '#545C7D',
+    },
+    hoverOpacity: null,
+    multiSelectRegion: true,
+    normalizeFunction: 'linear', 
+    scaleColors: ['#b6d6ff', '#005ace'],
+    selectedColor: '#E4572E',
+    selectedRegions: null,
+    showTooltip: true,
+	onRegionClick: function(event, code, region)
+	{
+		console.log(code);
+		selectedCountry = region;
+		selectedCode = code;
+		//Check if the country is on the disabled list
+		var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
+		if (placesApp.disabledCountryArray.indexOf(selectedCode) >= 0 ) {
+			event.preventDefault();
+		}
+		//Check if there are 3 selected
+		else if (placesApp.countryArray.length >= 3) {
+			console.log('Greater')
+			//Check to see if the new selected region is in the list already
+			if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
+				//If so remove it
 
-	placesApp.countryArray = [];
-	var selectedCountry = undefined;
-	var selectedCode = undefined;
-	placesApp.disabledCountryArray = [
-		'af',
-		'ag',
-		'bb',
-		'bj',
-		'bt',
-		'bw',
-		'bf',
-		'bi',
-		'cm',
-		'cf',
-		'td',
-		'km',
-		'cr',
-		'dj',
-		'dm',
-		'gq',
-		'er',
-		'gl',
-		'gd',
-		'gw',
-		'gy',
-		'kz',
-		'ls',
-		'mr',
-		'kn',
-		'lc',
-		'st',
-		'sb',
-		'sz',
-		'tl',
-		'tm',
-		'vu',
-		'zm'
-	];
-	  jQuery('#vmap').vectorMap({
-	    map: 'world_en',
-	    backgroundColor: 'transparent',
-	    borderColor: 'transparent',
-	    borderOpacity: 1,
-	    borderWidth: 0.5,
-	    color: '#7F859D',
-	    colors: {
-	    	af: '#545C7D',
-	    	ag: '#545C7D',
-	    	bb: '#545C7D',
-	    	bj: '#545C7D',
-	    	bt: '#545C7D',
-	    	bw: '#545C7D',
-	    	bf: '#545C7D',
-	    	bi: '#545C7D',
-	    	cm: '#545C7D',
-	    	cf: '#545C7D',
-	    	td: '#545C7D',
-	    	km: '#545C7D',
-	    	cr: '#545C7D',
-	    	dj: '#545C7D',
-	    	dm: '#545C7D',
-	    	gq: '#545C7D',
-	    	er: '#545C7D',
-	    	gl: '#545C7D',
-	    	gd: '#545C7D',
-	    	gw: '#545C7D',
-	    	gy: '#545C7D',
-	    	kz: '#545C7D',
-	    	ls: '#545C7D',
-	    	mr: '#545C7D',
-	    	kn: '#545C7D',
-	    	lc: '#545C7D',
-	    	st: '#545C7D',
-	    	sb: '#545C7D',
-	    	sz: '#545C7D',
-	    	tl: '#545C7D',
-	    	tm: '#545C7D',
-	    	vu: '#545C7D',
-	    	zm: '#545C7D',
-	    },
-	    enableZoom: false,
-	    hoverColor: '#F3A712',
-	    hoverOpacity: null,
-	    multiSelectRegion: true,
-	    normalizeFunction: 'linear', 
-	    scaleColors: ['#b6d6ff', '#005ace'],
-	    selectedColor: '#E4572E',
-	    selectedRegions: null,
-	    showTooltip: true,
-		onRegionClick: function(event, code, region)
-		{
-			console.log(code);
-			selectedCountry = region;
-			selectedCode = code;
-			//Check if the country is on the disabled list
-			var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
-			if (placesApp.disabledCountryArray.indexOf(selectedCode) >= 0 ) {
-				event.preventDefault();
-			}
-			//Check if there are 3 selected
-			else if (placesApp.countryArray.length >= 3) {
-				console.log('Greater')
-				//Check to see if the new selected region is in the list already
-				if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
-					//If so remove it
-
-					placesApp.countryArray.splice(selectedIndex,1);
-				}
-				else {
-					//If it is not! Prevent the map from selected anything else
-					event.preventDefault();
-				}
+				placesApp.countryArray.splice(selectedIndex,1);
 			}
 			else {
-				//If there are LESS than 3 selected, do the thing
-				if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
-					//If so remove it
-					placesApp.countryArray.splice(selectedIndex,1);
-				}
-				else {
-					placesApp.countryArray.push(selectedCountry);
-				}
+				//If it is not! Prevent the map from selected anything else
+				event.preventDefault();
 			}
-		},   
-	  //   onRegionSelect: function(event, code, region)
-	  //   {
-	  //       if (placesApp.countryArray.length >= 3 && selectedCountry !== '') {
-
-	  //       	console.log("working", selectedCountry);
-			// 	placesApp.countryArray.pop(selectedCountry);
-			// } 
-			// else if (placesApp.countryArray.length < 3) {
-			// 	placesApp.countryArray.push(selectedCountry);
-			// 	console.log(placesApp.countryArray)
-			// } 
-			// else {
-			// 	console.log(placesApp.countryArray)
-	  //       	console.log("reached limit");
-			// 	event.preventDefault();
-			// }
-	  //   },
-	    // onRegionDeselect: function(event, code, region)
-	    // {
+		}
+		else {
+			//If there are LESS than 3 selected, do the thing
+			if(placesApp.countryArray.indexOf(selectedCountry) >= 0) {
+				//If so remove it
+				placesApp.countryArray.splice(selectedIndex,1);
+			}
+			else {
+				placesApp.countryArray.push(selectedCountry);
+			}
+		}
+	},   
+});
 
 
-	    // }
-	});
+$(function(){
+	placesApp.init();
 });
