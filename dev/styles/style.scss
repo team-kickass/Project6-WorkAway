@@ -1,9 +1,6 @@
 @import 'setup';
 @import 'variables';
 
-.wrapper {
-
-}
 body {
 	background: $blue;
 }
@@ -37,16 +34,20 @@ p {
 	margin: 3rem auto;
 }
 
+.header-p {
+	margin-bottom: 0.5rem;
+}
+
 .intro-text {
 	text-align: center;
-	margin: 3rem auto;
+	margin: 2rem auto;
+	margin-bottom: 0;
 }
 
 #vmap {
 	width: 95vw;
 	height: 90vh;
 	margin: 0 auto;
-	margin-bottom: 50px;
 }
 
 .alert {
@@ -95,6 +96,7 @@ footer {
 form {
 	text-align: center;
 	position: relative;
+	bottom: 40px;
 
 	select {
 	-webkit-appearance: none;
@@ -140,7 +142,7 @@ form {
 	}
 }
 
-.alert {
+.alert, .alert2 {
 	display: none;
 	position: absolute;
 	left: 0;
@@ -166,6 +168,10 @@ form {
 		top: -50%;
 		transform: translate(50%, 0);
 	}
+}
+
+.alert2 {
+	bottom: 200%;
 }
 
 //results Section starts here

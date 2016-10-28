@@ -128,6 +128,15 @@ placesApp.mrsubmit = function(){
 
 };
 
+placesApp.startOver = function () {
+	//smooth scroll
+	$('.startOver').on('click', function(e) {
+		$('html, body').animate({
+		    scrollTop: $("#top").offset().top
+		}, 800);
+	});
+};
+
  
 //this is the displayPlaces function - displays the information on the page
 placesApp.displayPlaces = function(country, nomadURL, cityName, monthlyPrice, coworkingPrice, coffeePrice, image){
@@ -166,12 +175,9 @@ placesApp.displayPlaces = function(country, nomadURL, cityName, monthlyPrice, co
 //this is the init function
 placesApp.init = function(){
 	placesApp.mrsubmit();
+	placesApp.startOver();
 }; //init function ends
 
-
-
-
-////////////////////////////////////////////////////////////////
 
 var currencyApiKey = '9896895338c0fda481213ecbf853dcd7'
 
@@ -376,6 +382,8 @@ jQuery('#vmap').vectorMap({
 		selectedCode = code;
 		//Check if the country is on the disabled list
 		var selectedIndex = placesApp.countryArray.indexOf(selectedCountry);
+		
+
 		if (placesApp.disabledCountryArray.indexOf(selectedCode) >= 0 ) {
 			event.preventDefault();
 		}
@@ -391,6 +399,8 @@ jQuery('#vmap').vectorMap({
 			else {
 				//If it is not! Prevent the map from selected anything else
 				event.preventDefault();
+				$('.alert2').css("display","block").delay(1000).fadeOut();
+
 			}
 		}
 		else {
@@ -401,6 +411,7 @@ jQuery('#vmap').vectorMap({
 			}
 			else {
 				placesApp.countryArray.push(selectedCountry);
+				$('.alert').fadeOut();
 			}
 		}
 	},   
